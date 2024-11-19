@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" type="module"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="video-section">
+    
+    <video width="600" id="video" src="https://files2.heygen.ai/aws_pacific/avatar_tmp/11a5b9d1e76d4ea899960634e73c76f8/c112e956d0034e7a9423941012586694.mp4?Expires=1732037737&Signature=UDPzEz2lKB7d6EEfO6j0kmD-Mvf1lplDEUNanFu9qHlxNR6nT~vkENfcKJx-0SN5pXYImM~qr3NRXztvCer7SkqcepGcIbdSCZh7vaZyXmsqyaZS3p-X5l3c-c3j5BcnxTcQjI7UfO2JTTCADbRC3jeM4dXdLikoZKcYx4v0~hQPh4eCAxfX6nZlwK-u8vCTWHWaYZAPyo07~8VP3~TnW5XxLtXvC4BBaEj80PURz2EisLs8myUX~mkA4jlt9HWGQHWFLPVYcxQMzsIUPwZ3p1KNNmZmXHvnhXc8~~zdPT2OrlKlhM309Nr--fkPAxWFxAmxvtSLOOv-EHv3I3JwEw__&Key-Pair-Id=K38HBHX5LX3X2H"></video>
+            
+            <div id="popUp" class="popup" style="display: none;">
+                <h1>Você entendeu?</h1>
+                <div class="popup-buttons">
+                    <button id="sim" class="popup-button">SIM</button>
+                    <button id="nao" class="popup-button">NÃO</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="text-with-estrela">
+                <div id="destino" class="destino"></div>
+                <div id="estrela" style="display: none;">
+                    <img src="./ZalX.gif" alt="Estrelinha rodando" class="estrela-img">
+                </div>
+            </div>
+            <audio id="audio" src="./AUDIO-2024-11-18-12-55-54.mp3"></audio>
+            <div id="explicacao" style="display: none;"></div>
+        </div>
+
+        <img id="imagemDestaque" class="imagem-canto" style="display: none;" alt="Imagem de apoio">
+    </div>
+</body>
+</html>
