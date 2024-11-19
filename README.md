@@ -138,4 +138,5 @@ Este projeto é gratuito para uso e modificação para fins educacionais. Atribu
 
 - **Recurso de Vídeo**: Usado para testes interativos.
 - **Fonte Poppins**: Utilizada para uma tipografia limpa e moderna.
-- **Equipe**: Pedro Gomes e Artur Acioli.
+- **Equipe**: Pedro Gomes e Artur Acioli. 
+
