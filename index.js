@@ -4719,7 +4719,7 @@ function mostra() {
     let imagemPath = `assets/image${indiceImagem}.webp`;  // Caminho dinâmico para sentenças importantes
     imagemDestaque.src = imagemPath;
     imagemDestaque.style.display = "block";
-
+    document.getElementById("c2").style.backgroundImage = "url(assets/images.png)"
     // Exibe a estrelinha e toca o som de beep
     estrela.style.display = "block"; // Mostra a estrelinha
     audio.play(); // Toca o som de beep
@@ -4745,7 +4745,7 @@ function proximaSentenca() {
 }
 
 // Inicia o vídeo e exibe a primeira sentença ao clicar no vídeo
-video.addEventListener("click", () => {
+document.getElementById("c2").addEventListener("click", () => {
   video.play();
   mostra();  // Chama a função `mostra` apenas quando o vídeo começa
 });
@@ -4753,7 +4753,6 @@ video.addEventListener("click", () => {
 // Evento para monitorar o tempo do vídeo e controlar as transições das sentenças e o pop-up
 video.addEventListener('timeupdate', function() {
   if (x >= sentencasComDestaques.length) return;
-
 
   let sentencaAtual = sentencasComDestaques[x];
 
@@ -4802,3 +4801,71 @@ document.getElementById("nao").addEventListener("click", () => {
   
   mostra(); // Exibe a sentença novamente
 });
+
+let processor = {
+  timerCallback: function () {
+    if (this.video.paused || this.video.ended) {
+      return;
+    }
+    this.computeFrame();
+    let self = this;
+    setTimeout(function () {
+      self.timerCallback();
+    }, 0);
+  },
+
+  doLoad: function () {
+    this.video = document.getElementById("video");
+    this.c1 = document.getElementById("c1");
+    this.ctx1 = this.c1.getContext("2d");
+    this.c2 = document.getElementById("c2");
+    this.ctx2 = this.c2.getContext("2d");
+    let self = this;
+    this.video.addEventListener(
+      "play",
+      function () {
+        self.width = self.video.videoWidth;
+        self.height = self.video.videoHeight;
+        self.timerCallback();
+      },
+      false
+    );
+  },
+
+  computeFrame: function () {
+    var corChromaKey = [0, 255, 51];
+    this.ctx1.drawImage(this.video, 0, 0, this.width, this.height);
+    let frame = this.ctx1.getImageData(0, 0, this.width, this.height);
+    let l = frame.data.length / 4;
+
+    for (let i = 0; i < l; i++) {
+      let r = frame.data[i * 4 + 0];
+      let g = frame.data[i * 4 + 1];
+      let b = frame.data[i * 4 + 2];
+      if (calculateColorDistance([r, g, b], corChromaKey) < 100)
+        frame.data[i * 4 + 3] = 0;
+    }
+    this.ctx2.putImageData(frame, 0, 0);
+    return;
+  },
+};
+
+function calculateColorDistance(color1, color2) {
+  if (color1.length !== 3 || color2.length !== 3) {
+    throw new Error("As cores devem ser arrays no formato [R, G, B].");
+  }
+
+  const distance = Math.sqrt(
+    Math.pow(color1[0] - color2[0], 2) +
+      Math.pow(color1[1] - color2[1], 2) +
+      Math.pow(color1[2] - color2[2], 2)
+  );
+
+  return distance;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  processor.doLoad();
+  
+});
+
