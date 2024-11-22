@@ -9,16 +9,20 @@
 </head>
 <body>
     <div class="container">
-        <div>
-           
-        </div>
         <div class="video-section">
-    
             
-            <canvas id="c2" width="1280" height="720" style="width: 640px; height: 360px;"></canvas>
+            <div style="width: 640px; height: 360px;">
+                <div style="width: 640px;height: 360px; background-image: url(assets/paris.jpg); opacity: 0.5;"></div>
+
+                <canvas id="c2" width="1280" height="720" style="width: 640px; position: absolute; top: 0;"></canvas>
+
+            </div>
+            
+            
+            
               
-            <div id="popUp" class="popup" style="display: none;">
-                <h1>Você entendeu?</h1>
+            <div id="popUp" class="popup" style="display: none; ">
+                <h1 style="display: block;">Você entendeu?</h1>
                 <div class="popup-buttons">
                     <button id="sim" class="popup-button">SIM</button>
                     <button id="nao" class="popup-button">NÃO</button>
@@ -28,10 +32,11 @@
         
         <div class="content-section">
             <div class="text-with-estrela">
-                <div id="destino" class="destino"></div>
                 <div id="estrela" style="display: none;">
                     <img src="./ZalX.gif" alt="Estrelinha rodando" class="estrela-img">
                 </div>
+                <div id="destino" class="destino"></div>
+                
             </div>
             <audio id="audio" src="./AUDIO-2024-11-18-12-55-54.mp3"></audio>
             <div id="explicacao" style="display: none;"></div>

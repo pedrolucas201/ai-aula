@@ -51,7 +51,7 @@ body {
     border-radius: 8px;
     max-width: 100%;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    background-image: url(assets/paris.jpg);
+    /* background-image: url(assets/paris.jpg); */
     background-repeat: no-repeat;
   }
 
@@ -68,7 +68,9 @@ body {
     text-align: center;
     z-index: 999999999999;
     width: 300px;
+    flex-direction: column;
 }
+
 
 .popup h1 {
     font-size: 16px;
@@ -94,6 +96,10 @@ body {
     background-color: #007bff;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+#nao{
+    background-color: maroon;
 }
 
 .popup-button:hover {

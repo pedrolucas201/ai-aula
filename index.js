@@ -4649,6 +4649,29 @@ var sentencasComDestaques = [
     "acabaEm": 73.653,
     "destaque": true,
     "popup": true,
+    "backgroundColor": "#D1FFDD",
+    "explicacaoDestaque": [
+      {
+        "alternativa": 1,
+        "explicacao": "As equações são ferramentas que usamos para representar a realidade. Elas descrevem como diferentes variáveis, como tempo, espaço e força, se relacionam e ajudam a prever resultados em diversas situações, como no movimento de planetas ou no comportamento de mercados financeiros."
+      },
+      {
+        "alternativa": 2,
+        "explicacao": "Imagine que você está montando um quebra-cabeça. As equações são como as peças que se encaixam para formar a imagem completa. Em áreas como a física, elas ajudam a organizar os conhecimentos que temos sobre o mundo, como as leis que governam o movimento dos corpos."
+      },
+      {
+        "alternativa": 3,
+        "explicacao": "Em engenharia, as equações ajudam a planejar e calcular a construção de pontes, prédios e máquinas, levando em conta diversas variáveis. Por exemplo, elas permitem calcular o quanto um material pode suportar sem quebrar, garantindo a segurança da construção."
+      },
+      {
+        "alternativa": 4,
+        "explicacao": "As equações funcionam como uma linguagem universal. Por exemplo, em programação, elas são usadas para criar algoritmos que ajudam a resolver problemas de forma eficiente, como otimizar a distribuição de recursos em uma empresa ou prever o tráfego de um site."
+      },
+      {
+        "alternativa": 5,
+        "explicacao": "Se pensarmos nas equações como receitas, elas nos dizem exatamente o que precisamos (como variáveis) e como juntar esses ingredientes para chegar a uma solução. Na economia, por exemplo, elas são usadas para calcular o impacto de uma decisão, como um aumento de preço, no comportamento dos consumidores."
+      }
+    ]
   },
   {
     "sentenca": "Seu estudo é crucial para a compreensão e resolução de problemas em diversos contextos",
@@ -4719,7 +4742,7 @@ function mostra() {
     let imagemPath = `assets/image${indiceImagem}.webp`;  // Caminho dinâmico para sentenças importantes
     imagemDestaque.src = imagemPath;
     imagemDestaque.style.display = "block";
-    document.getElementById("c2").style.backgroundImage = "url(assets/images.png)"
+    document.getElementById("background").style.opacity = 0.5;
     // Exibe a estrelinha e toca o som de beep
     estrela.style.display = "block"; // Mostra a estrelinha
     audio.play(); // Toca o som de beep
@@ -4787,6 +4810,7 @@ document.getElementById("nao").addEventListener("click", () => {
     numeroExplicacao++;
     if (numeroExplicacao < sentencaAtual.explicacaoDestaque.length) {
       document.getElementById("explicacao").innerText = sentencaAtual.explicacaoDestaque[numeroExplicacao].explicacao;
+      document.getElementById("explicacao").style.display = "block";
     } else {
       numeroExplicacao = 0; // Reinicia o índice para explicações
       document.getElementById("explicacao").innerText = sentencaAtual.explicacaoDestaque[numeroExplicacao].explicacao;
