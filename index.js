@@ -4742,7 +4742,46 @@ function mostra() {
     let imagemPath = `assets/image${indiceImagem}.webp`;  // Caminho dinâmico para sentenças importantes
     imagemDestaque.src = imagemPath;
     imagemDestaque.style.display = "block";
+<<<<<<< HEAD
     document.getElementById("background").style.opacity = 0.5;
+=======
+    if (sentencaAtual.qt > 100) {
+      imagemDestaque.style.width = "25%";
+    } else {
+      imagemDestaque.style.width = "10%";
+    }
+
+    while (document.getElementById("c2").firstChild != null) {
+      document.getElementById("c2").removeChild(document.getElementById("c2").firstChild);
+    }
+
+    if (sentencaAtual.destaque) {
+      // Verifica se o canvas já existe
+      let canvas = document.getElementById("c2");
+      if (!canvas) {
+        // Cria o canvas apenas se ele não existir
+        canvas = document.createElement("canvas");
+        canvas.id = "c2";
+        canvas.width = 1280;
+        canvas.height = 720;
+        document.body.appendChild(canvas); // Adiciona o canvas ao body ou outro contêiner
+      }
+    
+      const ctx = canvas.getContext("2d");
+    
+      // Configura a imagem
+      const img = new Image();
+      img.src = imagemPath;
+      img.onload = function () {
+        // Desenha a imagem no canvas
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      };
+    }
+    
+    
+    document.getElementById("c2").style.backgroundImage = "url(assets/images.png)"
+    document.getElementById("c2").style.opacity = "0.5";
+>>>>>>> 11cf6b7dd784dfde9472cc04e821b67a3f84f1c9
     // Exibe a estrelinha e toca o som de beep
     estrela.style.display = "block"; // Mostra a estrelinha
     audio.play(); // Toca o som de beep
@@ -4754,6 +4793,8 @@ function mostra() {
     indiceImagem++;
   } else {
     // Exibe sentença comum e oculta a imagem e a estrelinha
+    document.getElementById("c2").style.opacity = "1";
+    document.getElementById("c2").style.backgroundImage = "url(assets/paris.jpg)";
     destino.innerHTML = sentencaAtual.sentenca;
     destino.style.backgroundColor = "#FFFFFF";
     imagemDestaque.style.display = "none"; // Oculta a imagem para sentenças comuns
