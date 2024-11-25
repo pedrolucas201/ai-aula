@@ -223,6 +223,37 @@ function mostra() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const backgroundVideo = document.querySelector("#background video"); // Seleciona o vídeo de fundo
+  const c2Element = document.getElementById("c2"); // Seleciona o elemento c2
+  const mainVideo = document.getElementById("video"); // Seleciona o vídeo principal
+  
+  // Inicialmente pausa o vídeo de fundo
+  backgroundVideo.pause();
+
+  // Adiciona um evento de clique no elemento c2 para iniciar os vídeos
+  c2Element.addEventListener("click", () => {
+    if (mainVideo.paused) {
+      mainVideo.play(); // Inicia o vídeo principal
+      backgroundVideo.play(); // Inicia o vídeo de fundo
+    }
+  });
+
+  // Sincroniza o vídeo de fundo com o estado do vídeo principal
+  mainVideo.addEventListener("play", () => {
+    if (backgroundVideo.paused) {
+      backgroundVideo.play();
+    }
+  });
+
+  mainVideo.addEventListener("pause", () => {
+    if (!backgroundVideo.paused) {
+      backgroundVideo.pause();
+    }
+  });
+});
+
+
 // Função para avançar a sentença e atualizar a legenda
 function proximaSentenca() {
   x++; // Incrementa o índice das sentenças para avançar para a próxima
