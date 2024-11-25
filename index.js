@@ -1,120 +1,172 @@
 var backgroundDiv = document.getElementById("background");
 
 var sentencasComDestaques = [
-  {
-    "background": {
-      "video": "assets/nuvem.mp4",
-      "dimensions": {
-        "width": 640,
-        "height": 360
-      },
-      "autoplay": true,
-      "loop": true
-    },
-    "sentencasComDestaques": [
+  { 
+    "sentenca": "Equações são sentenças matemáticas que afirmam a igualdade entre duas expressões algébricas",
+    "qt": 91,
+    "comecaEm": 0,
+    "acabaEm": 5.735,
+    "destaque": false,
+    "popup": false,
+    "changeImage": "https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-paris-capa2019-02-820x430.jpg",
+    "explicacaoDestaque": [
       {
-        "sentenca": "Equações são sentenças matemáticas que afirmam a igualdade entre duas expressões algébricas.",
-        "qt": 91,
-        "comecaEm": 0,
-        "acabaEm": 5.735,
-        "destaque": false,
-        "popup": false,
-        "changeImage": "https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-paris-capa2019-02-820x430.jpg",
-        "explicacaoDestaque": [
-          {
-            "alternativa": 1,
-            "explicacao": "Imagine que você tem uma balança de compras. De um lado, você coloca uma quantidade de frutas (ou expressões), e do outro, você coloca outra quantidade. A equação é a ideia de que essas duas quantidades devem ser exatamente iguais para que a balança se equilibre."
-          }
-        ]
-      },
-      {
-        "sentenca": "Elas contêm variáveis, que são símbolos representando valores desconhecidos, e constantes, que são valores fixos.",
-        "qt": 114,
-        "comecaEm": 5.735,
-        "acabaEm": 13.177,
-        "destaque": false,
-        "popup": false
-      },
-      {
-        "sentenca": "O objetivo principal ao trabalhar com equações é encontrar o valor ou os valores das variáveis que tornam a igualdade verdadeira.",
-        "qt": 130,
-        "comecaEm": 13.177,
-        "acabaEm": 21.699,
-        "destaque": true,
-        "popup": false,
-        "backgroundColor": "#D1FFDD",
-        "explicacaoDestaque": [
-          {
-            "alternativa": 1,
-            "explicacao": "Resolver uma equação é como um jogo de mistério. Você recebe pistas e precisa encontrar o valor que faz todo o enigma se resolver."
-          }
-        ],
-        "videoSegment": {
-          "src": "./assets/teste (1).mp4",
-          "start": 13.177,
-          "end": 21.699
-        }
-      },
-      {
-        "sentenca": "Isso é chamado de 'resolver a equação'.",
-        "qt": 40,
-        "comecaEm": 21.699,
-        "acabaEm": 25.124,
-        "destaque": false,
-        "popup": false
-      },
-      {
-        "sentenca": "As equações podem ser lineares (grau 1), quadráticas (grau 2), cúbicas (grau 3), e assim por diante, dependendo do maior expoente da variável.",
-        "qt": 143,
-        "comecaEm": 25.124,
-        "acabaEm": 36.514,
-        "destaque": false,
-        "popup": false
-      },
-      {
-        "sentenca": "Equações lineares possuem gráficos que são retas.",
-        "qt": 54,
-        "comecaEm": 36.514,
-        "acabaEm": 40.345,
-        "destaque": false,
-        "popup": false
-      },
-      {
-        "sentenca": "Equações são fundamentais em diversas áreas, como física, engenharia, economia e programação, modelando relações entre grandezas.",
-        "qt": 130,
-        "comecaEm": 63.913,
-        "acabaEm": 73.653,
-        "destaque": true,
-        "popup": true,
-        "backgroundColor": "#D1FFDD",
-        "explicacaoDestaque": [
-          {
-            "alternativa": 1,
-            "explicacao": "As equações são ferramentas que usamos para representar a realidade. Elas descrevem como diferentes variáveis, como tempo, espaço e força, se relacionam e ajudam a prever resultados em diversas situações, como no movimento de planetas ou no comportamento dos mercados financeiros."
-          },
-          {
-            "alternativa": 2,
-            "explicacao": "Imagine que você está montando um quebra-cabeça. As equações são como as peças que se encaixam para formar a imagem completa."
-          }
-        ],
-        "videoSegment": {
-          "src": "./assets/teste (1).mp4",
-          "start": 63.913,
-          "end": 73.653
-        }
+        "alternativa": 1,
+        "explicacao": "Imagine que você tem uma balança de compras. De um lado, você coloca uma quantidade de frutas (ou expressões), e do outro, você coloca outra quantidade. A equação é a ideia de que essas duas quantidades devem ser exatamente iguais para que a balança se equilibre."
       }
-    ],
-    "popupMessages": {
-      "understanding": "Você entendeu?",
-      "yes": "SIM",
-      "no": "NÃO"
-    },
-    "assets": {
-      "estrelaGif": "./ZalX.gif",
-      "audioPath": "./AUDIO-2024-11-18-12-55-54.mp3"
-    }
+    ]
+  },
+  {
+    "sentenca": "Elas contêm variáveis, que são símbolos representando valores desconhecidos, e constantes, que são valores fixos",
+    "qt": 114,
+    "comecaEm": 5.735,
+    "acabaEm": 13.177,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "O objetivo principal ao trabalhar com equações é encontrar o valor ou os valores das variáveis que tornam a igualdade verdadeira",
+    "qt": 130,
+    "comecaEm": 13.177,
+    "acabaEm": 21.699,
+    "destaque": true,
+    "popup": false,
+    "backgroundColor": "#D1FFDD",
+    "explicacaoDestaque": [
+      {
+        "alternativa": 1,
+        "explicacao": "Resolver uma equação é como um jogo de mistério. Você recebe pistas e precisa encontrar o valor que faz todo o enigma se resolver."
+      }
+    ]
+  },
+  {
+    "sentenca": "Isso é chamado de \"resolver a equação\"",
+    "qt": 40,
+    "comecaEm": 21.699,
+    "acabaEm": 25.124,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "As equações podem ser lineares (grau 1), quadráticas (grau 2), cúbicas (grau 3), e assim por diante, dependendo do maior expoente da variável",
+    "qt": 143,
+    "comecaEm": 25.124,
+    "acabaEm": 36.514,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Equações lineares possuem gráficos que são retas",
+    "qt": 54,
+    "comecaEm": 36.514,
+    "acabaEm": 40.345,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Equações podem ter uma, várias ou nenhuma solução",
+    "qt": 51,
+    "comecaEm": 40.345,
+    "acabaEm": 44.037,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Operações matemáticas como adição, subtração, multiplicação e divisão são usadas para isolar a variável e determinar sua solução",
+    "qt": 130,
+    "comecaEm": 44.037,
+    "acabaEm": 54.137,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "A solução é o valor que satisfaz a equação",
+    "qt": 44,
+    "comecaEm": 54.137,
+    "acabaEm": 57.69,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Em equações com mais de uma variável, pode-se expressar uma variável em função das outras",
+    "qt": 91,
+    "comecaEm": 57.69,
+    "acabaEm": 63.913,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Equações são fundamentais em diversas áreas, como física, engenharia, economia e programação, modelando relações entre grandezas",
+    "qt": 130,
+    "comecaEm": 63.913,
+    "acabaEm": 73.653,
+    "destaque": true,
+    "popup": true,
+    "backgroundColor": "#D1FFDD",
+    "explicacaoDestaque": [
+      {
+        "alternativa": 1,
+        "explicacao": "As equações são ferramentas que usamos para representar a realidade. Elas descrevem como diferentes variáveis, como tempo, espaço e força, se relacionam e ajudam a prever resultados em diversas situações, como no movimento de planetas ou no comportamento de mercados financeiros."
+      },
+      {
+        "alternativa": 2,
+        "explicacao": "Imagine que você está montando um quebra-cabeça. As equações são como as peças que se encaixam para formar a imagem completa. Em áreas como a física, elas ajudam a organizar os conhecimentos que temos sobre o mundo, como as leis que governam o movimento dos corpos."
+      },
+      {
+        "alternativa": 3,
+        "explicacao": "Em engenharia, as equações ajudam a planejar e calcular a construção de pontes, prédios e máquinas, levando em conta diversas variáveis. Por exemplo, elas permitem calcular o quanto um material pode suportar sem quebrar, garantindo a segurança da construção."
+      },
+      {
+        "alternativa": 4,
+        "explicacao": "As equações funcionam como uma linguagem universal. Por exemplo, em programação, elas são usadas para criar algoritmos que ajudam a resolver problemas de forma eficiente, como otimizar a distribuição de recursos em uma empresa ou prever o tráfego de um site."
+      },
+      {
+        "alternativa": 5,
+        "explicacao": "Se pensarmos nas equações como receitas, elas nos dizem exatamente o que precisamos (como variáveis) e como juntar esses ingredientes para chegar a uma solução. Na economia, por exemplo, elas são usadas para calcular o impacto de uma decisão, como um aumento de preço, no comportamento dos consumidores."
+      }
+    ]
+  },
+  {
+    "sentenca": "Seu estudo é crucial para a compreensão e resolução de problemas em diversos contextos",
+    "qt": 88,
+    "comecaEm": 73.653,
+    "acabaEm": 79.168,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "A manipulação adequada das equações garante a obtenção de soluções corretas",
+    "qt": 77,
+    "comecaEm": 79.168,
+    "acabaEm": 84.3,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Desigualdades também expressam relações entre expressões, mas usam símbolos como >, <, ≥, ≤ em vez do sinal de igualdade",
+    "qt": 122,
+    "comecaEm": 84.3,
+    "acabaEm": 91.928,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "Sistemas de equações envolvem mais de uma equação com várias variáveis",
+    "qt": 72,
+    "comecaEm": 91.928,
+    "acabaEm": null,
+    "destaque": false,
+    "popup": false,
+  },
+  {
+    "sentenca": "\n",
+    "qt": 1,
+    "comecaEm": null,
+    "acabaEm": null,
+    "destaque": false,
+    "popup": false,
   }
-];  
+];
 
 var x = 0; // Índice para controle de todas as sentenças
 var destino = document.getElementById("destino");
