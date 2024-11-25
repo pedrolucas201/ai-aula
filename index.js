@@ -203,6 +203,15 @@ function mostra() {
     // Log para verificar o caminho da imagem
     console.log(`Carregando imagem: ${imagemPath}`);
 
+    if (sentencaAtual.qt > 100) {
+      imagemDestaque.style.width = "25%";
+    } else if (sentencaAtual.qt > 50) {
+      imagemDestaque.style.width = "20%";
+    } else {
+      imagemDestaque.style.width = "15%";
+    }
+
+
     // Incrementa o índice das imagens importantes
     indiceImagem++;
   } else {
