@@ -195,7 +195,7 @@ function mostra() {
     let imagemPath = `assets/image${indiceImagem}.webp`;  // Caminho dinâmico para sentenças importantes
     imagemDestaque.src = imagemPath;
     imagemDestaque.style.display = "block";
-    document.getElementById("background").style.opacity = 0.5;
+    document.getElementById("background").style.opacity = 0.1;
     // Exibe a estrelinha e toca o som de beep
     estrela.style.display = "block"; // Mostra a estrelinha
     audio.play(); // Toca o som de beep
@@ -216,6 +216,7 @@ function mostra() {
     indiceImagem++;
   } else {
     // Exibe sentença comum e oculta a imagem e a estrelinha
+    document.getElementById("background").style.opacity = 0.8;
     destino.innerHTML = sentencaAtual.sentenca;
     destino.style.backgroundColor = "#FFFFFF";
     imagemDestaque.style.display = "none"; // Oculta a imagem para sentenças comuns
