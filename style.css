@@ -177,3 +177,33 @@ body {
     width: 30px; /* Adjustable size */
     height: auto;
 }
+
+#searchContainer {
+    margin-bottom: 10px;
+  }
+  
+  #searchInput {
+    width: 200px;
+    padding: 5px;
+  }
+  
+  #searchButton {
+    padding: 5px 10px;
+  }
+  
+  #searchResults {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+  
+  .searchResult {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .searchResult:hover {
+    background-color: #f0f0f0;
+  }
+  

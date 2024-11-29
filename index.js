@@ -224,8 +224,6 @@ for (var p = 0; p < aula.pacosAula.length; p++) {
   }
 
   aula.pacosAula[p].fim = aulaToda.length - 1; // indice final
-  aula.pacosAula[p].inicio = 
-  console.log(aula)
 }
 
 // atualiza o array com os pacos de aula
@@ -233,11 +231,11 @@ sentencas = aulaToda
 
 // exibe os títulos dos 'pacosAula' na interface com evento de clique
 for (var p = 0; p < aula.pacosAula.length; p++) {
-  document.getElementById("testeW").innerHTML += `<div  id="intro_${p}" onclick="navegarParaSecao(${p})">${aula.pacosAula[p].titulo}</div>`;
+  document.getElementById("testeW").innerHTML += `<div id="intro_${p}" onclick="navegarParaSecao(${p})"> ${aula.pacosAula[p].titulo}</div>`;
 }
 
 ///////////////////////////
-/////NAVEGAR PARA SECAO/////  
+/////NAVEGAR PARA SECAO////
 //////////////////////////
 
 function navegarParaSecao(p) {
@@ -256,11 +254,106 @@ function navegarParaSecao(p) {
   }
 }
 
+////////////////////////////////////
+/////FUNCAO MOSTRAR (NAO USANDO)////
+///////////////////////////////////
+
 function mostrar(p){
   alert(p)
  }
+
+/////////////////////////
+//////FORMAT TIMES///////
+/////////////////////////
+
+function formatTime(timeInSeconds) {
+  if (timeInSeconds === null || timeInSeconds === undefined) return 'N/A';
+  var totalSeconds = Math.floor(timeInSeconds);
+  var minutes = Math.floor(totalSeconds / 60);
+  var seconds = totalSeconds % 60;
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+////////////////////////////
+/////LÓGICA DE PESQUISA////
+//////////////////////////
+
+document.getElementById('searchButton').addEventListener('click', function() {
+  var query = document.getElementById('searchInput').value.trim().toLowerCase();
+  if (query === '') {
+    alert('Por favor, digite uma palavra para pesquisar.');
+    return;
+  }
+  buscarSentencas(query);
+});
+
+
+/////////////////////////
+////BUSCAR SENTENCAS/////
+/////////////////////////
  
- 
+function buscarSentencas(palavra) {
+  // Limpa os resultados anteriores
+  var searchResults = document.getElementById('searchResults');
+  searchResults.innerHTML = '';
+
+  // Encontra sentenças que contêm a palavra pesquisada
+  var resultados = sentencas.filter(function(sentencaObj) {
+    return sentencaObj.sentenca.toLowerCase().includes(palavra);
+  });
+
+  if (resultados.length === 0) {
+    searchResults.innerHTML = '<p>Nenhuma sentença encontrada.</p>';
+    return;
+  }
+
+  // Exibe os resultados
+  resultados.forEach(function(sentencaObj, index) {
+    // Verifica se o passo de aula foi visualizado
+    var podeNavegar = sentencaObj.pacoAula.foiVisto;
+
+    var resultDiv = document.createElement('div');
+    resultDiv.className = 'searchResult';
+    resultDiv.style.cursor = podeNavegar ? 'pointer' : 'not-allowed';
+    resultDiv.style.color = podeNavegar ? 'blue' : 'gray';
+
+    // Formatar os tempos em minutos e segundos
+    var comecaEm = sentencaObj.comecaEm !== null ? formatTime(sentencaObj.comecaEm) : 'N/A';
+    var acabaEm = sentencaObj.acabaEm !== null ? formatTime(sentencaObj.acabaEm) : 'N/A';
+
+    resultDiv.innerHTML = `
+      <p><strong>Sentença:</strong> ${sentencaObj.sentenca}</p>
+      <p><strong>Passo de Aula:</strong> ${sentencaObj.pacoAula.titulo}</p>
+      <p><strong>Tempo:</strong> ${comecaEm} - ${acabaEm}</p>
+    `;
+
+    resultDiv.addEventListener('click', function() {
+      if (podeNavegar) {
+        navegarParaSentenca(sentencaObj.indiceGeral);
+      } else {
+        alert('Não é possível navegar para esta sentença porque o passo de aula correspondente ainda não foi visualizado.');
+      }
+    });
+
+    searchResults.appendChild(resultDiv);
+  });
+}
+
+
+// ADICIONAR PASSO DA AULA AO LADO DA SENTENCA E SEGUNDOS DA SENTENÇA // FEITO :D  //
+
+//////////////////////////////
+/////NAVEGAR PARA SENTENCA////
+/////////////////////////////
+
+function navegarParaSentenca(indice) {
+  video.pause();
+  x = indice;
+  sentencaAtual = sentencas[x];
+  video.currentTime = sentencaAtual.comecaEm;
+  mostra();
+  video.play();
+}
 
 ///////////////////////////
 /////FUNCAO MOSTRA/////
