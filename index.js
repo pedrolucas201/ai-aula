@@ -1,6 +1,6 @@
 var backgroundDiv = document.getElementById("background");
 
-var sentencasComDestaques = [
+var sentencas = [
   { 
     "sentenca": "Equações são sentenças matemáticas que afirmam a igualdade entre duas expressões algébricas",
     "qt": 91,
@@ -169,6 +169,7 @@ var sentencasComDestaques = [
 ];
 
 var x = 0; // Índice para controle de todas as sentenças
+var sentencaAtual = sentencas[x];
 var destino = document.getElementById("destino");
 var numeroExplicacao = -1; // Índice para as explicações de apoio
 var video = document.getElementById("video");
@@ -176,15 +177,104 @@ var imagemDestaque = document.getElementById("imagemDestaque"); // Referência p
 var indiceImagem = 1; // Índice para sentenças importantes (destaques) apenas
 var estrela = document.getElementById("estrela");
 var audio = document.getElementById("audio");
+var d = document.getElementById("destinoNav");
+var popUp = document.getElementById("popUp");
+
+var aula = {};
+aula.pacosAula = [];
+
+// Distribuindo as sentenças entre os 'pacosAula'
+var sentencasFinalidade = sentencas.slice(0, 6); // As primeiras 6 sentenças
+var sentencasRepresentacao = sentencas.slice(6, 12); // Próximas 6 sentenças
+var sentencasResumo = sentencas.slice(12); // Restantes
+
+// criando os "pacosAula" com títulos e sentenças
+aula.pacosAula.push({
+  titulo: "Finalidade",
+  indice: 0,
+  sentencas: sentencasFinalidade,
+  foiVisto: false
+});
+
+aula.pacosAula.push({
+  titulo: "Representação Gráfica",
+  indice: 1,
+  sentencas: sentencasRepresentacao,  
+  foiVisto: false
+});
+
+aula.pacosAula.push({
+  titulo: "Resumo/Revisão",
+  indice: 2,
+  sentencas: sentencasResumo,
+  foiVisto: false
+});
+
+// Concatenando todas as sentenças em uma única lista
+var aulaToda = [];
+
+for (var p = 0; p < aula.pacosAula.length; p++) {
+  for (var s = 0; s < aula.pacosAula[p].sentencas.length; s++) {
+    aulaToda.push(aula.pacosAula[p].sentencas[s]);
+    // Adicionando uma referência ao 'pacoAula' na sentença
+    aula.pacosAula[p].sentencas[s].pacoAula = aula.pacosAula[p];
+
+    aula.pacosAula[p].sentencas[s].indiceGeral = aulaToda.length - 1;
+
+  }
+
+  aula.pacosAula[p].fim = aulaToda.length - 1; // indice final
+  aula.pacosAula[p].inicio = 
+  console.log(aula)
+}
+
+// atualiza o array com os pacos de aula
+sentencas = aulaToda
+
+// exibe os títulos dos 'pacosAula' na interface com evento de clique
+for (var p = 0; p < aula.pacosAula.length; p++) {
+  document.getElementById("testeW").innerHTML += `<div  id="intro_${p}" onclick="navegarParaSecao(${p})">${aula.pacosAula[p].titulo}</div>`;
+}
+
+///////////////////////////
+/////NAVEGAR PARA SECAO/////  
+//////////////////////////
+
+function navegarParaSecao(p) {
+  if (aula.pacosAula[p].foiVisto) {
+    if(popUp.style.display = "block"){
+      popUp.style.display = "none"
+    }
+    video.pause();
+    x = aula.pacosAula[p].sentencas[0].indiceGeral;
+    sentencaAtual = sentencas[x];
+    video.currentTime = sentencaAtual.comecaEm;
+    mostra(); // Atualiza a exibição
+    video.play();
+  } else {
+    alert('Esta seção ainda não foi visualizada.');
+  }
+}
+
+function mostrar(p){
+  alert(p)
+ }
+ 
+ 
+
+///////////////////////////
+/////FUNCAO MOSTRA/////
+//////////////////////////
 
 // Função para sincronizar a sentença com o vídeo e exibir o pop-up para as sentenças importantes
-function mostra() {
-  if (x >= sentencasComDestaques.length) return;
+function mostra() { 
 
-  let sentencaAtual = sentencasComDestaques[x];
+  if (x >= sentencas.length) return;
 
-  // Exibir o índice atual e a sentença
-  console.log(`Sentença ${x + 1}: ${sentencaAtual.sentenca}`);
+  sentencaAtual = sentencas[x];
+
+  // Exibe o título da seção, a sentença e o índice atual
+  console.log(`Seção: ${sentencaAtual.pacoAula.titulo} | Sentença ${x + 1}: ${sentencaAtual.sentenca}`);
   
   if (sentencaAtual.destaque) {
     // Exibe a sentença em destaque (negrito) com imagem e cor de fundo
@@ -222,7 +312,19 @@ function mostra() {
     imagemDestaque.style.display = "none"; // Oculta a imagem para sentenças comuns
     estrela.style.display = "none"; // Oculta a estrelinha para sentenças comuns
   }
+
+    // Verifica se a sentença atual é a última da seção
+  if (x === sentencaAtual.pacoAula.fim) {
+    sentencaAtual.pacoAula.foiVisto = true;
+    // Atualiza o estilo do título da seção para indicar que foi visualizada
+    var sectionDiv = document.getElementById(`intro_${sentencaAtual.pacoAula.indice}`);
+    sectionDiv.style.color = 'green'; // Indica que a seção foi visualizada
+  }
 }
+
+///////////////////////////
+/////DOM CONTENT LOADED///
+//////////////////////////
 
 document.addEventListener("DOMContentLoaded", () => {
   const backgroundVideo = document.querySelector("#background video"); // Seleciona o vídeo de fundo
@@ -255,6 +357,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+///////////////////////////
+/////PROXIMA SENTENCA/////
+//////////////////////////
+
+
 // Função para avançar a sentença e atualizar a legenda
 function proximaSentenca() {
   x++; // Incrementa o índice das sentenças para avançar para a próxima
@@ -269,9 +376,9 @@ document.getElementById("c2").addEventListener("click", () => {
 
 // Evento para monitorar o tempo do vídeo e controlar as transições das sentenças e o pop-up
 video.addEventListener('timeupdate', function() {
-  if (x >= sentencasComDestaques.length) return;
+  if (x >= sentencas.length) return;
 
-  let sentencaAtual = sentencasComDestaques[x];
+  sentencaAtual = sentencas[x];
   if(sentencaAtual.changeImage){
     backgroundDiv.style.backgroundImage = `url(${sentencaAtual.changeImage})`
   }
@@ -279,7 +386,7 @@ video.addEventListener('timeupdate', function() {
   if (video.currentTime >= sentencaAtual.acabaEm) {
     if (sentencaAtual.popup) {
       // Pausa e exibe o pop-up se a sentença é importante
-      document.getElementById("popUp").style.display = "flex";
+      popUp.style.display = "flex";
       video.pause();
     } else {
       // Passa para a próxima sentença automaticamente
@@ -300,7 +407,7 @@ document.getElementById("sim").addEventListener("click", () => {
 
 // Evento para o botão "Não" do pop-up (repete a sentença em velocidade reduzida com explicação de apoio)
 document.getElementById("nao").addEventListener("click", () => {
-  let sentencaAtual = sentencasComDestaques[x];
+  let sentencaAtual = sentencas[x];
 
   // Exibe a explicação de apoio
   if (sentencaAtual.explicacaoDestaque && sentencaAtual.explicacaoDestaque.length > 0) {

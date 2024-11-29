@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Learning</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" type="module"></script>
 </head>
 <body>
     <div class="container">
+
+        <div id="testeW"></div>
+
+        antes
+        <div id="destinoNav">
+
+        </div>
+        depois
         <div class="video-section">
             
             <div style="width: 640px; height: 360px;">
@@ -38,7 +45,7 @@
                 <div id="destino" class="destino"></div>
                 
             </div>
-            <audio id="audio" src="./AUDIO-2024-11-18-12-55-54.mp3"></audio>
+            <audio id="audio" src="./beep.mp3"></audio>
             <div id="explicacao" style="display: none;"></div>
         </div>
 
@@ -46,5 +53,6 @@
         <video width="1280" style="visibility: hidden; " height="720" id="video" src="./assets/teste (1).mp4"></video>
         <canvas style="width: 640px; height: 360px;  visibility: hidden;" id="c1" width="1280" height="720"></canvas>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
