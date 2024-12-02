@@ -207,3 +207,7 @@ body {
     background-color: #f0f0f0;
   }
   
+  #resetButton {
+    margin-top: 10px;
+    padding: 5px 10px;
+  }
